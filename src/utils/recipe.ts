@@ -1,5 +1,5 @@
 export type RecipeType = {
-    id: number,
+    
     name: string;
     category: string;
     image: string;

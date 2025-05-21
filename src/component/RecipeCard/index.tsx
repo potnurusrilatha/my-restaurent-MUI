@@ -24,7 +24,7 @@ import { ListItem } from '@mui/material';
  
 
  
-export default function RecipeReviewCard({name,id,image,category,area, ingredients,video, instructions}:RecipeType) {
+export default function RecipeReviewCard({name, image, category, area, ingredients, video, instructions}:RecipeType) {
    
 
   const [value, setValue] = React.useState('1');

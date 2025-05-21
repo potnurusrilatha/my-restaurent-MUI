@@ -28,7 +28,7 @@ const RecipePage =() => {
     console.log(savedIngredients)
 
     let recipeToSave = {
-      id: recipeData.number,
+      
      name: recipeData.strMeal,
       category: recipeData.strCategory,
       area: recipeData.strArea,
