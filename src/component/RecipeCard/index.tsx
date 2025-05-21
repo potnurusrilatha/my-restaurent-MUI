@@ -57,18 +57,18 @@ export default function RecipeReviewCard({name, image, category, area, ingredien
       />
       <CardContent>
           <Box sx={{ width: '100%', typography: 'body1' }}>
-  <TabContext value={value}>
-    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <TabList onChange={handleChange} aria-label="lab API tabs example">
-  <Tab label="Ingredients" value="1" />
-  <Tab label="Instructions" value="2" />
-  <Tab label="Media" value="3" />
-  </TabList>
-  </Box>
-  <TabPanel value="1">{ingredients.map((item:string, index:number) => <p key={index}>{item}</p>)}</TabPanel>
-  <TabPanel sx={{
-    whiteSpace:"pre-wrap"}} value="2">{instructions}</TabPanel>
-  <TabPanel value="3">{video}</TabPanel>
+      <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab label="Ingredients" value="1" />
+              <Tab label="Instructions" value="2" />
+              <Tab label="Media" value="3" />
+            </TabList>
+          </Box>
+        <TabPanel value="1">{ingredients.map((item:string, index:number) => <p key={index}>{item}</p>)}</TabPanel>
+        <TabPanel sx={{
+           whiteSpace:"pre-wrap"}} value="2">{instructions}</TabPanel>
+    <TabPanel value="3">{embedVideo(video)}</TabPanel>
   </TabContext>
 </Box>
       </CardContent>
