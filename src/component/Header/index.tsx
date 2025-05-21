@@ -16,7 +16,7 @@ import React from "react";
 
 import Link from "next/link";
  
-const pages = ["Recipes", "About", "Contact"];
+const pages = ["Recipes", "About", "RecipeCard"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
  
 function ResponsiveAppBar() {

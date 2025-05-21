@@ -12,23 +12,29 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 
 // Update the import path below to the correct relative path where RecipeType is defined.
 // For example, if RecipeType is in src/types/recipe.ts, use:
-import RecipeType from "@/utils/recipe"
+import { RecipeType } from "@/utils/recipe"
 // If the file does not exist, create it and define RecipeType there.
  import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import { ListItem } from '@mui/material';
 
  
 
  
-export default function RecipeReviewCard({name,id,image,category,area, ingredients, instructions}:RecipeType) {
+export default function RecipeReviewCard({name,id,image,category,area, ingredients,video, instructions}:RecipeType) {
+   
 
   const [value, setValue] = React.useState('1');
  
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
+  }
+
+  const embedVideo = (video:string):string => {
+    return video.replace("watch?v=" , "embed/")
   }
  
   return (
@@ -52,16 +58,17 @@ export default function RecipeReviewCard({name,id,image,category,area, ingredien
       <CardContent>
           <Box sx={{ width: '100%', typography: 'body1' }}>
   <TabContext value={value}>
-  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-  <TabList onChange={handleChange} aria-label="lab API tabs example">
-  <Tab label="Item One" value="1" />
-  <Tab label="Item Two" value="2" />
-  <Tab label="Item Three" value="3" />
+    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <TabList onChange={handleChange} aria-label="lab API tabs example">
+  <Tab label="Ingredients" value="1" />
+  <Tab label="Instructions" value="2" />
+  <Tab label="Media" value="3" />
   </TabList>
   </Box>
-  <TabPanel value="1">Item One</TabPanel>
-  <TabPanel value="2">Item Two</TabPanel>
-  <TabPanel value="3">Item Three</TabPanel>
+  <TabPanel value="1">{ingredients.map((item:string, index:number) => <p key={index}>{item}</p>)}</TabPanel>
+  <TabPanel sx={{
+    whiteSpace:"pre-wrap"}} value="2">{instructions}</TabPanel>
+  <TabPanel value="3">{video}</TabPanel>
   </TabContext>
 </Box>
       </CardContent>
