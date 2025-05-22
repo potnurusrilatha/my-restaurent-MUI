@@ -65,10 +65,13 @@ export default function RecipeReviewCard({name, image, category, area, ingredien
               <Tab label="Media" value="3" />
             </TabList>
           </Box>
-        <TabPanel value="1">{ingredients.map((item:string, index:number) => <p key={index}>{item}</p>)}</TabPanel>
+        <TabPanel value="1">{ingredients.map((item, index) => <p>{item}</p>)}</TabPanel>
         <TabPanel sx={{
            whiteSpace:"pre-wrap"}} value="2">{instructions}</TabPanel>
-    <TabPanel value="3">{embedVideo(video)}</TabPanel>
+    <TabPanel value="3">
+      <CardMedia component="iframe" src={embedVideo(video)}>{video}</CardMedia>
+        
+      </TabPanel>
   </TabContext>
 </Box>
       </CardContent>
